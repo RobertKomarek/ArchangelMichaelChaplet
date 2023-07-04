@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_rosary">
+
+    <fragment
+        android:id="@+id/navigation_rosary"
+        android:name="com.example.archangelmichaelchaplet.controllers.RosaryFragment"
+        android:label="@string/title_rosary"
+        tools:layout="@layout/fragment_rosary" />
+
+    <fragment
+        android:id="@+id/navigation_promises"
+        android:name="com.example.archangelmichaelchaplet.controllers.PromisesFragment"
+        android:label="@string/title_promises"
+        tools:layout="@layout/fragment_promises" />
+
+    <fragment
+        android:id="@+id/navigation_prayers"
+        android:name="com.example.archangelmichaelchaplet.controllers.PrayersFragment"
+        android:label="@string/title_prayers"
+        tools:layout="@layout/fragment_prayers" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.archangelmichaelchaplet.controllers.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

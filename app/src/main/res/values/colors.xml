@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#FF0024ED</color>
+    <color name="transparent">#005F5F5F</color>
+    <color name="text_Color_Rosary">#FFFFFF</color>
+    <color name="background_Text_View">#59000000</color>
+    <color name="indicator_unselected_color">#590B0A0A</color>
+    <color name="indicator_background">#26FFFFFF</color>
+    <color name="btn_nav_background_pressed">#BF09124E</color>
+    <color name="btn_nav_background">#BFFFFFFF</color>
+
+<!--LIGHT MODE-->
+    <!-- Primary brand color. -->
+    <!-- Background color of button and icon color of Bottom Nav Menu e.g. Rosary, Promises, etc.-->
+    <color name="colorPrimary">#7A327A</color>
+    <!--    Status Bar at top of Device Screen-->
+    <color name="colorPrimaryVariant">#240F24</color>
+    <!-- Text color of e.g. button etc-->
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <!-- Secondary brand color. -->
+    <color name="colorSecondary">@color/teal_200</color>
+    <color name="colorSecondaryVariant">@color/teal_700</color>
+    <color name="colorOnSecondary">@color/black</color>
+    <!-- Status bar color. -->
+    <color name="statusBarColor">?attr/colorPrimaryVariant</color>
+
+<!--    DARK MODE-->
+    <!-- Primary brand color. -->
+    <!--    Background color of button and icon color of Bottom Nav Menu e.g. Rosary, Promises, etc.-->
+    <color name="colorPrimaryDark">@color/purple_200</color>
+    <!--    Status Bar at top of Device Screen-->
+    <color name="colorPrimaryVariantDark">@color/purple_200</color>
+    <!--    Text color of button etc-->
+    <color name="colorOnPrimaryDark">@color/black</color>
+    <!-- Secondary brand color. -->
+    <color name="colorSecondaryDark">@color/teal_200</color>
+    <color name="colorSecondaryVariantDark">@color/teal_200</color>
+    <color name="colorOnSecondaryDark">@color/black</color>
+    <!-- Status bar color. -->
+    <color name="statusBarColorDark">?attr/colorPrimaryVariant</color>
+    <!-- Customize your theme here. -->
+</resources>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/indicatorContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnDarkNight"
+        android:layout_width="@dimen/width_btn_nav"
+        android:layout_height="@dimen/height_btn_nav"
+        android:layout_marginEnd="@dimen/margin_btn_nav"
+        android:layout_marginBottom="@dimen/margin_bottom_btn_nav"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnStart"
+        android:background="@drawable/btn_day_night_custom"
+        app:srcCompat="@drawable/btn_day_night"/>
+
+    <ImageButton
+        android:id="@+id/btnStart"
+        android:layout_width="@dimen/width_btn_nav"
+        android:layout_height="@dimen/height_btn_nav"
+        android:layout_marginStart="@dimen/margin_btn_nav"
+        android:layout_marginEnd="@dimen/margin_btn_nav_center"
+        android:layout_marginBottom="@dimen/margin_bottom_btn_nav"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        android:background="@drawable/btn_start_custom"
+        app:srcCompat="@drawable/btn_start" />
+
+    <ImageButton
+        android:id="@+id/btnBackward"
+        android:layout_width="@dimen/width_btn_nav"
+        android:layout_height="@dimen/height_btn_nav"
+        android:layout_marginStart="@dimen/margin_btn_nav_center"
+        android:layout_marginBottom="@dimen/margin_bottom_btn_nav"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        android:background="@drawable/btn_backward_custom"
+        app:srcCompat="@drawable/btn_backward" />
+
+    <ImageButton
+        android:id="@+id/btnForward"
+        android:layout_width="@dimen/width_btn_nav"
+        android:layout_height="@dimen/height_btn_nav"
+        android:layout_marginStart="@dimen/margin_btn_nav"
+        android:layout_marginBottom="@dimen/margin_bottom_btn_nav"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBackward"
+        android:background="@drawable/btn_forward_custom"
+        app:srcCompat="@drawable/btn_forward" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

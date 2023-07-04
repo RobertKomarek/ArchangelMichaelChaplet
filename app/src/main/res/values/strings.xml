@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Sancti Rosarii Michael</string>
+
+    <string name="title_prayers">Prayers</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_rosary">Rosary</string>
+    <string name="title_promises">Promises</string>
+
+    <string name="text_btnDarkMode">Dark Mode</string>
+    <string name="text_btnStart">Start</string>
+    <string name="text_btnBackward">Backward</string>
+    <string name="text_btnForward">Forward</string>
+</resources>
