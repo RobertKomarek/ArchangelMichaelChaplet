@@ -4,13 +4,13 @@
     <item android:state_pressed="true">
         <shape>
             <corners android:radius="@dimen/btn_radius" /> <!-- Set the desired corner radius in dp -->
-            <solid android:color="@color/btn_nav_background_pressed" /> <!-- Set the desired background color when pressed -->
+            <solid android:color="?attr/colorOnPrimary" /> <!-- Set the desired background color when pressed -->
         </shape>
     </item>
     <item>
         <shape>
             <corners android:radius="@dimen/btn_radius" /> <!-- Set the desired corner radius in dp -->
-            <solid android:color="@color/btn_nav_background" /> <!-- Set the desired background color for other states -->
+            <solid android:color="?attr/colorOnPrimary"/> <!-- Set the desired background color for other states -->
         </shape>
     </item>
 </selector>

@@ -105,6 +105,8 @@ class RosaryFragment : Fragment() {
 
     private fun setDarkOrLightMode() {
         if (darkModeEnabled == true) {
+            //change image of button
+            binding.btnDarkNight.setImageResource(R.drawable.baseline_wb_sunny_24)
             carouselItemList.clear()
             for (rosaryDetail in loadedDetails) {
                 val drawableResId = getDrawableResIdFromImageName(rosaryDetail.ImageDark)
@@ -113,6 +115,8 @@ class RosaryFragment : Fragment() {
             }
             adapter.notifyDataSetChanged()
         } else {
+            //change image of button
+            binding.btnDarkNight.setImageResource(R.drawable.baseline_dark_mode_24)
             carouselItemList.clear()
             for (rosaryDetail in loadedDetails) {
                 val drawableResId = getDrawableResIdFromImageName(rosaryDetail.Image)

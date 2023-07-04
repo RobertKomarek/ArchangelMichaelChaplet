@@ -21,7 +21,7 @@
     <!-- Background color of button and icon color of Bottom Nav Menu e.g. Rosary, Promises, etc.-->
     <color name="colorPrimary">#7A327A</color>
     <!--    Status Bar at top of Device Screen-->
-    <color name="colorPrimaryVariant">#240F24</color>
+    <color name="colorPrimaryVariant">@color/black</color>
     <!-- Text color of e.g. button etc-->
     <color name="colorOnPrimary">#FFFFFF</color>
     <!-- Secondary brand color. -->

@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnStart"
         android:background="@drawable/btn_day_night_custom"
-        app:srcCompat="@drawable/btn_day_night"/>
+        app:srcCompat="@drawable/baseline_dark_mode_24"/>
 
     <ImageButton
         android:id="@+id/btnStart"
@@ -78,7 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         android:background="@drawable/btn_start_custom"
-        app:srcCompat="@drawable/btn_start" />
+        app:srcCompat="@drawable/baseline_keyboard_double_arrow_left_24" />
 
     <ImageButton
         android:id="@+id/btnBackward"
@@ -91,7 +91,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         android:background="@drawable/btn_backward_custom"
-        app:srcCompat="@drawable/btn_backward" />
+        app:srcCompat="@drawable/baseline_keyboard_arrow_left_24" />
 
     <ImageButton
         android:id="@+id/btnForward"
@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBackward"
         android:background="@drawable/btn_forward_custom"
-        app:srcCompat="@drawable/btn_forward" />
+        app:srcCompat="@drawable/baseline_keyboard_arrow_right_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
