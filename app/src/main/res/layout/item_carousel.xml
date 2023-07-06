@@ -26,24 +26,22 @@
         app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/divider" />
 
-    <FrameLayout
+    <!--<FrameLayout
         android:layout_width="410dp"
         android:layout_height="371dp"
-        android:layout_marginTop="-12dp"
         android:background="@color/background_Text_View"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageDivider">
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/imageDivider">
+    </FrameLayout>-->
 
     <ScrollView
         android:id="@+id/scrollView2"
         style="@android:style/Widget.Material.Light.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="-5dp"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="135dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +55,7 @@
 
             <TextView
                 android:id="@+id/text_Rosary"
+                android:background="@color/background_Text_View"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
