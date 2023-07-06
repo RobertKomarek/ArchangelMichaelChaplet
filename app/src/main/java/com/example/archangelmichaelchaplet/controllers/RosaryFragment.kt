@@ -2,11 +2,10 @@ package com.example.archangelmichaelchaplet.controllers
 
 import CarouselAdapter
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
+import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,6 +14,8 @@ import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentRosaryBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
+import com.google.android.material.snackbar.Snackbar
+
 
 class RosaryFragment : Fragment() {
     private var _binding: FragmentRosaryBinding? = null
@@ -34,6 +35,9 @@ class RosaryFragment : Fragment() {
         // Disable the action bar (with the name of the selected tab e.g. Rosary)
         val activity = requireActivity() as? AppCompatActivity
         activity?.supportActionBar?.hide()
+
+        val blinkingAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.info_btn_blinking)
+        binding.btnInfo.startAnimation(blinkingAnimation)
 
         return rootView
     }
@@ -60,14 +64,14 @@ class RosaryFragment : Fragment() {
                 val carouselItem = CarouselItem(drawableResId, rosaryDetail.Chaplet)
                 carouselItemList.add(carouselItem)
             }
-
         }
         adapter = CarouselAdapter(carouselItemList)
         viewPager.adapter = adapter
 
         // Add indicators for each item in the adapter
         for (i in 0 until adapter.itemCount) {
-            val indicatorItem = LayoutInflater.from(requireContext()).inflate(R.layout.indicator_item_layout, indicatorContainer, false)
+            val indicatorItem = LayoutInflater.from(requireContext())
+                .inflate(R.layout.indicator_item_layout, indicatorContainer, false)
             indicatorContainer.addView(indicatorItem)
         }
 
@@ -101,6 +105,19 @@ class RosaryFragment : Fragment() {
             val currentItem = binding.viewPager.currentItem
             binding.viewPager.setCurrentItem(currentItem - 1, true)
         }
+
+        binding.btnInfo.setOnClickListener {
+
+
+        }
+    }
+
+    private fun onButton2Clicked() {
+        TODO("Not yet implemented")
+    }
+
+    private fun onButton1Clicked() {
+        TODO("Not yet implemented")
     }
 
     private fun setDarkOrLightMode() {

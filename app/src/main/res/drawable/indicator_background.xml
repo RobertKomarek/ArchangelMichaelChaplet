@@ -6,7 +6,6 @@
     <item android:state_selected="false">
         <bitmap
             android:src="@drawable/indicator_unselected"/>
-<!--            android:tint="@color/indicator_unselected_color" /> -->
     </item>
 
     <!-- Selected state -->

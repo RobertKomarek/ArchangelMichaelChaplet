@@ -20,28 +20,19 @@
     <ImageView
         android:id="@+id/imageDivider"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/divider" />
-
-    <!--<FrameLayout
-        android:layout_width="410dp"
-        android:layout_height="371dp"
-        android:background="@color/background_Text_View"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageDivider">
-    </FrameLayout>-->
 
     <ScrollView
         android:id="@+id/scrollView2"
         style="@android:style/Widget.Material.Light.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
         android:layout_marginBottom="135dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +49,7 @@
                 android:background="@color/background_Text_View"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/text_Color_Rosary" />
