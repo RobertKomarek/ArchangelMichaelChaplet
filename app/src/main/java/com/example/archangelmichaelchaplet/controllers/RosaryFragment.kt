@@ -104,7 +104,7 @@ class RosaryFragment : Fragment() {
     }
 
     private fun setDarkOrLightMode() {
-        if (darkModeEnabled == true) {
+        if (darkModeEnabled) {
             //change image of button
             binding.btnDarkNight.setImageResource(R.drawable.baseline_wb_sunny_24)
             carouselItemList.clear()

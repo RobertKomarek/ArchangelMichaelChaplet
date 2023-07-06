@@ -49,7 +49,7 @@ data class RosaryDetails (
             val rosaryDetailsList: List<RosaryDetails> = gson.fromJson(jsonText, listType)
 
             val filteredList = rosaryDetailsList.filter { details ->
-                details.Language.contains("English")
+                details.Language.contains("Deutsch")
             }
 
             return filteredList

@@ -4,9 +4,10 @@
     <item android:state_pressed="true">
         <shape>
             <corners android:radius="@dimen/btn_radius" /> <!-- Set the desired corner radius in dp -->
-            <solid android:color="?attr/colorOnPrimary" /> <!-- Set the desired background color when pressed -->
+            <solid android:color="?attr/colorPrimaryVariant" /> <!-- Set the desired background color when pressed -->
         </shape>
     </item>
+<!--    Default status when not pressed-->
     <item>
         <shape>
             <corners android:radius="@dimen/btn_radius" /> <!-- Set the desired corner radius in dp -->
