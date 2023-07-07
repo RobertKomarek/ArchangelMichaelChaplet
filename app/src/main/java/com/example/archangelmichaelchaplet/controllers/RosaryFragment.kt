@@ -46,7 +46,59 @@ class RosaryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewPager = binding.viewPager
+        binding.frameImageViewWelcome.visibility = View.VISIBLE
+        binding.imageViewWelcome.visibility = View.VISIBLE
+        binding.textViewWelcomeDescription.visibility = View.VISIBLE
+        binding.btnContinueWelcomeScreen.visibility = View.VISIBLE
+        binding.btnContinueWelcomeScreen.visibility = View.VISIBLE
+
+        binding.btnContinueWelcomeScreen.setOnClickListener {
+            binding.frameImageViewWelcome.visibility = View.GONE
+            binding.imageViewWelcome.visibility = View.GONE
+            binding.textViewWelcomeDescription.visibility = View.GONE
+            binding.btnContinueWelcomeScreen.visibility = View.GONE
+            binding.textViewWelcome.visibility = View.GONE
+
+            viewPager = binding.viewPager
+            indicatorContainer = binding.indicatorContainer
+
+            //Call the Rosary Details
+            carouselItemList = ArrayList<CarouselItem>()
+            loadedDetails = ArrayList<RosaryDetails>()
+            loadedDetails = RosaryDetails.loadRosaryDetails(requireContext())
+
+            for (rosaryDetail in loadedDetails) {
+                if (darkModeEnabled == true) {
+                    val drawableResId = getDrawableResIdFromImageName(rosaryDetail.ImageDark)
+                    val carouselItem = CarouselItem(drawableResId, rosaryDetail.Chaplet)
+                    carouselItemList.add(carouselItem)
+                } else {
+                    val drawableResId = getDrawableResIdFromImageName(rosaryDetail.Image)
+                    val carouselItem = CarouselItem(drawableResId, rosaryDetail.Chaplet)
+                    carouselItemList.add(carouselItem)
+                }
+            }
+            adapter = CarouselAdapter(carouselItemList)
+            viewPager.adapter = adapter
+
+            // Add indicators for each item in the adapter
+            for (i in 0 until adapter.itemCount) {
+                val indicatorItem = LayoutInflater.from(requireContext())
+                    .inflate(R.layout.indicator_item_layout, indicatorContainer, false)
+                indicatorContainer.addView(indicatorItem)
+            }
+
+            // Set up the page change listener
+            viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    updateIndicator(position)
+                }
+            })
+        }
+
+
+       /* viewPager = binding.viewPager
         indicatorContainer = binding.indicatorContainer
 
         //Call the Rosary Details
@@ -81,7 +133,7 @@ class RosaryFragment : Fragment() {
                 super.onPageSelected(position)
                 updateIndicator(position)
             }
-        })
+        })*/
 
         binding.btnDarkNight.setOnClickListener {
             //toggle between darkModeEnable is true and false
@@ -107,8 +159,6 @@ class RosaryFragment : Fragment() {
         }
 
         binding.btnInfo.setOnClickListener {
-
-
         }
     }
 
