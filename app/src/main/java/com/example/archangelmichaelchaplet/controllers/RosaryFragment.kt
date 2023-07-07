@@ -46,26 +46,30 @@ class RosaryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.frameImageViewWelcome.visibility = View.VISIBLE
+        //Call the Rosary Details
+        carouselItemList = ArrayList<CarouselItem>()
+        loadedDetails = ArrayList<RosaryDetails>()
+        loadedDetails = RosaryDetails.loadRosaryDetails(requireContext())
+
+        binding.textViewWelcome.text = loadedDetails[0].AppWelcomeTitle
+        binding.textViewWelcomeDescription.text = loadedDetails[0].AppWelcomeText
+        binding.btnContinueWelcomeScreen.text = loadedDetails[0].ChapletStart
+
+        /*binding.frameImageViewWelcome.visibility = View.VISIBLE
         binding.imageViewWelcome.visibility = View.VISIBLE
         binding.textViewWelcomeDescription.visibility = View.VISIBLE
         binding.btnContinueWelcomeScreen.visibility = View.VISIBLE
-        binding.btnContinueWelcomeScreen.visibility = View.VISIBLE
+        binding.btnContinueWelcomeScreen.visibility = View.VISIBLE*/
 
         binding.btnContinueWelcomeScreen.setOnClickListener {
-            binding.frameImageViewWelcome.visibility = View.GONE
-            binding.imageViewWelcome.visibility = View.GONE
-            binding.textViewWelcomeDescription.visibility = View.GONE
-            binding.btnContinueWelcomeScreen.visibility = View.GONE
-            binding.textViewWelcome.visibility = View.GONE
+            binding.frameImageViewWelcome.visibility = View.INVISIBLE
+            binding.imageViewWelcome.visibility = View.INVISIBLE
+            binding.textViewWelcomeDescription.visibility = View.INVISIBLE
+            binding.btnContinueWelcomeScreen.visibility = View.INVISIBLE
+            binding.textViewWelcome.visibility = View.INVISIBLE
 
             viewPager = binding.viewPager
             indicatorContainer = binding.indicatorContainer
-
-            //Call the Rosary Details
-            carouselItemList = ArrayList<CarouselItem>()
-            loadedDetails = ArrayList<RosaryDetails>()
-            loadedDetails = RosaryDetails.loadRosaryDetails(requireContext())
 
             for (rosaryDetail in loadedDetails) {
                 if (darkModeEnabled == true) {
