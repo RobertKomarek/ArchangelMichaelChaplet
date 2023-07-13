@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -58,26 +57,25 @@
         android:layout_width="@dimen/width_btn_nav"
         android:layout_height="@dimen/height_btn_nav"
         android:layout_marginEnd="@dimen/margin_btn_nav"
-        android:layout_marginBottom="@dimen/margin_bottom_btn_nav"
+        android:layout_marginBottom="95dp"
         android:adjustViewBounds="true"
+        android:background="@drawable/btn_custom_state_pressed"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnStart"
-        android:background="@drawable/btn_custom_state_pressed"
-        app:srcCompat="@drawable/baseline_dark_mode_24"/>
+        app:srcCompat="@drawable/baseline_dark_mode_24" />
 
     <ImageButton
         android:id="@+id/btnStart"
         android:layout_width="@dimen/width_btn_nav"
         android:layout_height="@dimen/height_btn_nav"
-        android:layout_marginStart="@dimen/margin_btn_nav"
         android:layout_marginEnd="@dimen/margin_btn_nav_center"
-        android:layout_marginBottom="@dimen/margin_bottom_btn_nav"
+        android:layout_marginBottom="95dp"
         android:adjustViewBounds="true"
+        android:background="@drawable/btn_custom_state_pressed"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
-        android:background="@drawable/btn_custom_state_pressed"
         app:srcCompat="@drawable/baseline_keyboard_double_arrow_left_24" />
 
     <ImageButton
@@ -85,12 +83,12 @@
         android:layout_width="@dimen/width_btn_nav"
         android:layout_height="@dimen/height_btn_nav"
         android:layout_marginStart="@dimen/margin_btn_nav_center"
-        android:layout_marginBottom="@dimen/margin_bottom_btn_nav"
+        android:layout_marginBottom="95dp"
         android:adjustViewBounds="true"
+        android:background="@drawable/btn_custom_state_pressed"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        android:background="@drawable/btn_custom_state_pressed"
         app:srcCompat="@drawable/baseline_keyboard_arrow_left_24" />
 
     <ImageButton
@@ -98,12 +96,12 @@
         android:layout_width="@dimen/width_btn_nav"
         android:layout_height="@dimen/height_btn_nav"
         android:layout_marginStart="@dimen/margin_btn_nav"
-        android:layout_marginBottom="@dimen/margin_bottom_btn_nav"
+        android:layout_marginBottom="95dp"
         android:adjustViewBounds="true"
+        android:background="@drawable/btn_custom_state_pressed"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBackward"
-        android:background="@drawable/btn_custom_state_pressed"
         app:srcCompat="@drawable/baseline_keyboard_arrow_right_24" />
 
 
