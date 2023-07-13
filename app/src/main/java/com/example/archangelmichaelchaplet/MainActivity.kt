@@ -45,28 +45,4 @@ class   MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
-    fun showMessageDialog(context: Context): Boolean {
-        var showNextTime = true
-        //val loadedDetails = RosaryDetails.loadRosaryDetails(requireContext(ArchangelMichaelChaplet.app.main))
-
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("Message Title")
-        builder.setMessage("Message content")
-
-        builder.setPositiveButton("Show Next Time") { _, _ ->
-            // User clicked on "Show Next Time" button
-            showNextTime = true
-        }
-
-        builder.setNegativeButton("Do Not Show") { _, _ ->
-            // User clicked on "Do Not Show" button
-            showNextTime = false
-        }
-
-        val dialog = builder.create()
-        dialog.show()
-
-        return showNextTime
-    }
 }

@@ -3,7 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_rosary">
+    app:startDestination="@+id/navigation_welcome">
+
+    <fragment
+        android:id="@+id/navigation_welcome"
+        android:name="com.example.archangelmichaelchaplet.controllers.WelcomeFragment"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_fragment_welcome_to_navigation_rosary"
+            app:destination="@id/navigation_rosary" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_rosary"

@@ -15,6 +15,8 @@
     <color name="indicator_background">#26FFFFFF</color>
     <color name="btn_nav_background_pressed">#BF09124E</color>
     <color name="btn_nav_background">#BFFFFFFF</color>
+    <color name="ic_launcher_background">#4C0764</color>
+    <color name="ic_launcher_foreground">#4C0764</color>
 
 <!--LIGHT MODE-->
     <!-- Primary brand color. -->
