@@ -1,9 +1,8 @@
 package com.example.archangelmichaelchaplet.controllers
 
 import CarouselAdapter
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,8 @@ import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentRosaryBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
-
+import androidx.fragment.app.activityViewModels
+import com.example.archangelmichaelchaplet.viewmodels.DarkLightModeViewModel
 
 
 class RosaryFragment : Fragment() {
@@ -26,8 +26,8 @@ class RosaryFragment : Fragment() {
     private lateinit var loadedDetails : List<RosaryDetails>
     private lateinit var viewPager: ViewPager2
     private lateinit var indicatorContainer: LinearLayout
-    var rosaryStarted : Boolean = false
     var darkModeEnabled : Boolean = false
+    val darkLightModeViewModel: DarkLightModeViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -38,22 +38,23 @@ class RosaryFragment : Fragment() {
         val activity = requireActivity() as? AppCompatActivity
         activity?.supportActionBar?.hide()
 
-        return rootView
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        darkModeEnabled = darkLightModeViewModel.darkModeEnabled
+        if (darkModeEnabled) {
+            binding.btnDarkNight.setImageResource(R.drawable.baseline_wb_sunny_24)
+        } else {
+            binding.btnDarkNight.setImageResource(R.drawable.baseline_dark_mode_24)
+        }
 
         //Call the Rosary Details
         carouselItemList = ArrayList<CarouselItem>()
-        loadedDetails = ArrayList<RosaryDetails>()
         loadedDetails = RosaryDetails.loadRosaryDetails(requireContext())
 
         viewPager = binding.viewPager
         indicatorContainer = binding.indicatorContainer
 
+        //setDarkOrLightMode()
         for (rosaryDetail in loadedDetails) {
-            if (darkModeEnabled == true) {
+            if (darkModeEnabled) {
                 val drawableResId = getDrawableResIdFromImageName(rosaryDetail.ImageDark)
                 val carouselItem = CarouselItem(drawableResId, rosaryDetail.Chaplet)
                 carouselItemList.add(carouselItem)
@@ -84,11 +85,13 @@ class RosaryFragment : Fragment() {
         binding.btnDarkNight.setOnClickListener {
             //toggle between darkModeEnable is true and false
             darkModeEnabled = !darkModeEnabled
+            println("Dark Mode Enabled $darkModeEnabled")
+            darkLightModeViewModel.darkModeEnabled = darkModeEnabled
             setDarkOrLightMode()
         }
 
         binding.btnStart.setOnClickListener {
-            val currentItem = binding.viewPager.currentItem
+           //val currentItem = binding.viewPager.currentItem
             binding.viewPager.setCurrentItem(0, true)
         }
 
@@ -103,6 +106,8 @@ class RosaryFragment : Fragment() {
             val currentItem = binding.viewPager.currentItem
             binding.viewPager.setCurrentItem(currentItem - 1, true)
         }
+
+        return rootView
     }
 
     private fun setDarkOrLightMode() {
