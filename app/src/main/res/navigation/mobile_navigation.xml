@@ -37,4 +37,6 @@
         android:name="com.example.archangelmichaelchaplet.controllers.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
+
+
 </navigation>

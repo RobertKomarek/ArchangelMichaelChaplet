@@ -8,55 +8,20 @@
     android:layout_marginBottom="56dp"
     tools:context=".controllers.PromisesFragment">
 
-    <TextView
-        android:id="@+id/text_promises"
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutPromisesIndulgences"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPagerPromises"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/viewPagerPromises" />
 
-    <LinearLayout
-        android:layout_width="413dp"
-        android:layout_height="75dp"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerPromisesIndulgences"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
