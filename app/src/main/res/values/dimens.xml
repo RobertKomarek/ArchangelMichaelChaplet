@@ -10,5 +10,5 @@
     <dimen name="btn_radius">25dp</dimen>
     <!-- Non-round icon with background must use reduced size to fit circle -->
     <dimen name="splash_screen_icon_size">108dp</dimen>
-    <dimen name="height_tab_bar">50dp</dimen>
+    <dimen name="height_tab_bar">45dp</dimen>
 </resources>

@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="56dp"
     tools:context=".controllers.PrayersFragment">
 
-    <TextView
-        android:id="@+id/text_prayers"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerPrayers"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="TEST"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayoutPrayers" >
+    </androidx.viewpager2.widget.ViewPager2>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="261dp"
-        android:layout_height="258dp"
-        android:background="@color/purple_500"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.tabs.TabLayout
+        android:background="@color/tab_bar_background_color"
+        android:id="@+id/tabLayoutPrayers"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_tab_bar"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/text_prayers"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/baseline_dark_mode_24" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
