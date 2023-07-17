@@ -10,13 +10,14 @@
     <color name="blue">#FF0024ED</color>
     <color name="transparent">#005F5F5F</color>
     <color name="text_Color_Rosary">#FFFFFF</color>
-    <color name="background_Text_View">#59000000</color>
+    <color name="background_Text_View">#73000000</color>
     <color name="indicator_unselected_color">#590B0A0A</color>
     <color name="indicator_background">#26FFFFFF</color>
     <color name="btn_nav_background_pressed">#BF09124E</color>
     <color name="btn_nav_background">#BFFFFFFF</color>
     <color name="ic_launcher_background">#4C0764</color>
     <color name="ic_launcher_foreground">#4C0764</color>
+    <color name="tab_bar_background_color">#CDCCCC</color>
 
 <!--LIGHT MODE-->
     <!-- Primary brand color. -->

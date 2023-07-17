@@ -8,20 +8,25 @@
     android:layout_marginBottom="56dp"
     tools:context=".controllers.PromisesFragment">
 
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutPromisesIndulgences"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/viewPagerPromises"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewPagerPromises" />
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerPromisesIndulgences"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayoutPromisesIndulgences" >
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <com.google.android.material.tabs.TabLayout
+        android:background="@color/tab_bar_background_color"
+        android:id="@+id/tabLayoutPromisesIndulgences"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_tab_bar"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

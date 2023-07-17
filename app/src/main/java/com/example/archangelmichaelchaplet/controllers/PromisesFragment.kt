@@ -14,19 +14,22 @@ class PromisesFragment : Fragment() {
     private var _binding: FragmentPromisesBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentPromisesBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
         val rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext())
 
         val fragmentList = arrayListOf(
-            IndulgencesPiusTab(),
-            PromisesMichaelTab()
+            PromisesMichaelTab(),
+            IndulgencesPiusTab()
         )
 
         val adapter = ViewPagerIndulgencesPromisesAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
-
         binding.viewPagerPromisesIndulgences.adapter = adapter
 
         TabLayoutMediator(binding.tabLayoutPromisesIndulgences, binding.viewPagerPromisesIndulgences) { tab, position ->
