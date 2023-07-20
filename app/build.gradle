@@ -57,6 +57,8 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:<version>'
     //Splashscreen
     implementation "androidx.core:core-splashscreen:1.0.1"
+    implementation 'androidx.cardview:cardview:1.0.0' // or later version
+
 
 
 }

@@ -5,22 +5,374 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".controllers.SettingsFragment">
 
     <TextView
-        android:id="@+id/text_settings"
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#9C27B0"
-        android:text="Settings"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="75dp"
+        android:gravity="center"
+        android:text="MICHAEL THE ARCHANGEL CHAPLET"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:textStyle="italic"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="7dp"
+        android:text="Sancti Rosarii Michael"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/imageViewMichael"
+        android:layout_width="150dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_image_welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/imageViewDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="13dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewMichael" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        style="@android:style/Widget.Material.Light.ScrollView"
+        android:layout_width="373dp"
+        android:layout_height="335dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="105dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDivider">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+<!--ENGLISH-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewEnglish"
+                        android:layout_width="@dimen/card_view_flag_width"
+                        android:layout_height="@dimen/card_view_flag_height"
+                        android:layout_marginStart="@dimen/constraint_cardview_start"
+                        android:layout_marginTop="25dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageEnglish"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/lang_english" />
+                    </androidx.cardview.widget.CardView>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonEnglish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:padding="@dimen/radio_button_padding"
+                        android:text="English"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardViewEnglish"
+                        app:layout_constraintStart_toEndOf="@+id/cardViewEnglish" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+<!--FRENCH-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewFrench"
+                        android:layout_width="@dimen/card_view_flag_width"
+                        android:layout_height="@dimen/card_view_flag_height"
+                        android:layout_marginStart="@dimen/constraint_cardview_start"
+                        android:layout_marginTop="@dimen/constraint_cardview_top"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageFrench"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/lang_french"
+                            android:scaleType="centerCrop" />
+                    </androidx.cardview.widget.CardView>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonFrench"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:padding="@dimen/radio_button_padding"
+                        android:text="Francais"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardViewFrench"
+                        app:layout_constraintStart_toEndOf="@+id/cardViewFrench" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+<!--GERMAN-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewGerman"
+                        android:layout_width="@dimen/card_view_flag_width"
+                        android:layout_height="@dimen/card_view_flag_height"
+                        android:layout_marginStart="@dimen/constraint_cardview_start"
+                        android:layout_marginTop="@dimen/constraint_cardview_top"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageGerman"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/lang_german"
+                            android:scaleType="centerCrop" />
+                    </androidx.cardview.widget.CardView>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonGerman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:padding="@dimen/radio_button_padding"
+                        android:text="Deutsch"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardViewGerman"
+                        app:layout_constraintStart_toEndOf="@+id/cardViewGerman" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+<!--PORTUGESE-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewPortugese"
+                        android:layout_width="@dimen/card_view_flag_width"
+                        android:layout_height="@dimen/card_view_flag_height"
+                        android:layout_marginStart="@dimen/constraint_cardview_start"
+                        android:layout_marginTop="@dimen/constraint_cardview_top"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imagePortugese"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/lang_portugese"
+                            android:scaleType="centerCrop" />
+                    </androidx.cardview.widget.CardView>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonPortugese"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:padding="@dimen/radio_button_padding"
+                        android:text="Português"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardViewPortugese"
+                        app:layout_constraintStart_toEndOf="@+id/cardViewPortugese" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+<!--ITALIAN-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewItalian"
+                        android:layout_width="@dimen/card_view_flag_width"
+                        android:layout_height="@dimen/card_view_flag_height"
+                        android:layout_marginStart="@dimen/constraint_cardview_start"
+                        android:layout_marginTop="@dimen/constraint_cardview_top"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageItalian"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/lang_italian"
+                            android:scaleType="centerCrop" />
+                    </androidx.cardview.widget.CardView>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonItalian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:padding="@dimen/radio_button_padding"
+                        android:text="Italiano"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardViewItalian"
+                        app:layout_constraintStart_toEndOf="@+id/cardViewItalian" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+<!--SPANISH-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewSpanish"
+                        android:layout_width="@dimen/card_view_flag_width"
+                        android:layout_height="@dimen/card_view_flag_height"
+                        android:layout_marginStart="@dimen/constraint_cardview_start"
+                        android:layout_marginTop="@dimen/constraint_cardview_top"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageSpanish"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/lang_spanish"
+                            android:scaleType="centerCrop" />
+                    </androidx.cardview.widget.CardView>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonSpanish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:padding="@dimen/radio_button_padding"
+                        android:text="Español"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardViewSpanish"
+                        app:layout_constraintStart_toEndOf="@+id/cardViewSpanish" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+<!--CHINESE-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewChinese"
+                        android:layout_width="@dimen/card_view_flag_width"
+                        android:layout_height="@dimen/card_view_flag_height"
+                        android:layout_marginStart="@dimen/constraint_cardview_start"
+                        android:layout_marginTop="@dimen/constraint_cardview_top"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageChinese"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/lang_chinese"
+                            android:scaleType="centerCrop" />
+                    </androidx.cardview.widget.CardView>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonChinese"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:padding="@dimen/radio_button_padding"
+                        android:text="中国人"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardViewChinese"
+                        app:layout_constraintStart_toEndOf="@+id/cardViewChinese" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

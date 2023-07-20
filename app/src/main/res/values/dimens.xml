@@ -8,7 +8,13 @@
     <dimen name="margin_btn_nav_center">12dp</dimen>
     <dimen name="margin_bottom_btn_nav">75dp</dimen>
     <dimen name="btn_radius">25dp</dimen>
+    <dimen name="card_view_flag_height">45dp</dimen>
+    <dimen name="card_view_flag_width">75dp</dimen>
     <!-- Non-round icon with background must use reduced size to fit circle -->
     <dimen name="splash_screen_icon_size">108dp</dimen>
     <dimen name="height_tab_bar">45dp</dimen>
+    <dimen name="margin_flag_radiobutton">25dp</dimen>
+    <dimen name="constraint_cardview_start">25dp</dimen>
+    <dimen name="constraint_cardview_top">25dp</dimen>
+    <dimen name="radio_button_padding">18dp</dimen>
 </resources>
