@@ -43,8 +43,10 @@
         android:layout_width="150dp"
         android:layout_height="85dp"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="7dp"
         android:scaleType="centerCrop"
         android:src="@drawable/splash_image_welcome"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -68,7 +70,7 @@
         android:layout_height="335dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="105dp"
+        android:layout_marginBottom="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-<!--ENGLISH-->
+            <!--ENGLISH-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -112,7 +114,7 @@
                         android:id="@+id/radioButtonEnglish"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="35dp"
+                        android:layout_marginStart="55dp"
                         android:padding="@dimen/radio_button_padding"
                         android:text="English"
                         android:textColor="@color/white"
@@ -120,7 +122,7 @@
                         app:layout_constraintStart_toEndOf="@+id/cardViewEnglish" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-<!--FRENCH-->
+            <!--FRENCH-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -154,7 +156,7 @@
                         android:id="@+id/radioButtonFrench"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="35dp"
+                        android:layout_marginStart="55dp"
                         android:padding="@dimen/radio_button_padding"
                         android:text="Francais"
                         android:textColor="@color/white"
@@ -162,7 +164,7 @@
                         app:layout_constraintStart_toEndOf="@+id/cardViewFrench" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-<!--GERMAN-->
+            <!--GERMAN-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -196,15 +198,25 @@
                         android:id="@+id/radioButtonGerman"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="35dp"
+                        android:layout_marginStart="55dp"
                         android:padding="@dimen/radio_button_padding"
                         android:text="Deutsch"
                         android:textColor="@color/white"
-                        app:layout_constraintBottom_toBottomOf="@+id/cardViewGerman"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/cardViewGerman" />
+
+                    <ImageView
+                        android:id="@+id/imageViewSwipeUp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="7dp"
+                        android:src="@drawable/baseline_swipe_up_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:tint="@color/btn_nav_background" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-<!--PORTUGESE-->
+            <!--PORTUGESE-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -238,7 +250,7 @@
                         android:id="@+id/radioButtonPortugese"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="35dp"
+                        android:layout_marginStart="55dp"
                         android:padding="@dimen/radio_button_padding"
                         android:text="Português"
                         android:textColor="@color/white"
@@ -246,7 +258,7 @@
                         app:layout_constraintStart_toEndOf="@+id/cardViewPortugese" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-<!--ITALIAN-->
+            <!--ITALIAN-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -280,15 +292,25 @@
                         android:id="@+id/radioButtonItalian"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="35dp"
+                        android:layout_marginStart="55dp"
                         android:padding="@dimen/radio_button_padding"
                         android:text="Italiano"
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="@+id/cardViewItalian"
                         app:layout_constraintStart_toEndOf="@+id/cardViewItalian" />
+
+                    <ImageView
+                        android:id="@+id/imageViewSwipeDown"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="7dp"
+                        android:src="@drawable/baseline_swipe_down_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/btn_nav_background" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-<!--SPANISH-->
+            <!--SPANISH-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -322,7 +344,7 @@
                         android:id="@+id/radioButtonSpanish"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="35dp"
+                        android:layout_marginStart="55dp"
                         android:padding="@dimen/radio_button_padding"
                         android:text="Español"
                         android:textColor="@color/white"
@@ -330,7 +352,7 @@
                         app:layout_constraintStart_toEndOf="@+id/cardViewSpanish" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-<!--CHINESE-->
+            <!--CHINESE-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -364,15 +386,80 @@
                         android:id="@+id/radioButtonChinese"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="35dp"
+                        android:layout_marginStart="55dp"
                         android:padding="@dimen/radio_button_padding"
                         android:text="中国人"
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="@+id/cardViewChinese"
                         app:layout_constraintStart_toEndOf="@+id/cardViewChinese" />
+
+                    <TextView
+                        android:id="@+id/textViewDevelopmentAndDesign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="25dp"
+                        android:text="Development and Design by (click on Button to send email):"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardViewChinese" />
+
+                    <Button
+                        android:id="@+id/buttonOpenMailApp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:text="robert.komarek@gmx.de"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewDevelopmentAndDesign" />
+
+
+                    <TextView
+                        android:id="@+id/textViewPublicDomain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:text="All images used in this App are in PUBLIC DOMAIN / CREATIVE COMMONS"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/buttonOpenMailApp" />
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageButton
+        android:id="@+id/playstoreButton"
+        android:background="@color/transparent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="15dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/playstore"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewMichael"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewMichael" />
+
+    <ImageButton
+        android:id="@+id/appStoreButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/appstore"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewMichael"
+        app:layout_constraintStart_toEndOf="@+id/imageViewMichael" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

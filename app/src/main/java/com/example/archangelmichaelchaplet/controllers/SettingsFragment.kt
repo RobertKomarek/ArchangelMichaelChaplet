@@ -1,5 +1,8 @@
 package com.example.archangelmichaelchaplet.controllers
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +10,10 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import com.example.archangelmichaelchaplet.R
-import com.example.archangelmichaelchaplet.databinding.FragmentPrayersBinding
-import com.example.archangelmichaelchaplet.databinding.FragmentPromisesBinding
-import com.example.archangelmichaelchaplet.databinding.FragmentRosaryBinding
 import com.example.archangelmichaelchaplet.databinding.FragmentSettingsBinding
+import android.content.pm.PackageManager
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
 class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
@@ -44,7 +47,48 @@ class SettingsFragment : Fragment() {
             }
         }
 
+        binding.appStoreButton.setOnClickListener {
+            var url = "https://apps.apple.com/de/app/sancti-rosarii-michael/id1577365794"
+            shareAppLink(url)
+        }
+        binding.playstoreButton.setOnClickListener {
+            var url = "http://play.google.com/store/apps/details?id=com.robertkomarek.sanctirosariimichael"
+            shareAppLink(url)
+        }
+        binding.buttonOpenMailApp.setOnClickListener {
+            var subject = "Sancti Rosarii Michael-App"
+            var email = "robert.komarek98@gmail.com"
+            sendMail(subject, email)
+        }
+
         return rootView
+    }
+
+    private fun sendMail(subject:String, email:String) {
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+        }
+
+        // Verify that there's an email app available to handle the intent
+        if (sendIntent.resolveActivity(requireContext().packageManager) != null) {
+            startActivity(Intent.createChooser(sendIntent, subject))
+        } else {
+            // Handle the case where no app is available to handle the intent
+            // For example, display an error message or provide an alternative action.
+        }
+    }
+
+    private fun shareAppLink(url: String) {
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, url)
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 
     override fun onDestroyView() {
