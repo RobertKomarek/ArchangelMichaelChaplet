@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentSettingsBinding
 import android.content.pm.PackageManager
+import android.graphics.Typeface
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
@@ -23,6 +24,12 @@ class SettingsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val rootView = binding.root
+
+        // Load the custom font from assets/fonts directory
+        val typeface = Typeface.createFromAsset(requireContext().assets, "fonts/lora_regular.ttf")
+
+        // Set the custom font to the TextView
+        binding.textView.typeface = typeface
 
         // Access views using the binding object
         binding.imageEnglish.setImageResource(R.drawable.lang_english)
@@ -61,7 +68,22 @@ class SettingsFragment : Fragment() {
             sendMail(subject, email)
         }
 
+        binding.buttonOpenCreativeCommons.setOnClickListener {
+            var url = "https://creativecommons.org"
+            openUrl(url)
+        }
+
+        binding.buttonOpenPublicDomain.setOnClickListener {
+            var url = "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+            openUrl(url)
+        }
+
         return rootView
+    }
+
+    private fun openUrl(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
     private fun sendMail(subject:String, email:String) {
