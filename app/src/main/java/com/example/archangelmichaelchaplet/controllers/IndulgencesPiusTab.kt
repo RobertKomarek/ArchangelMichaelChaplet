@@ -1,5 +1,7 @@
 package com.example.archangelmichaelchaplet.controllers
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +10,18 @@ import androidx.fragment.app.Fragment
 import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentPromisesBinding
 import com.example.archangelmichaelchaplet.databinding.TabIndulgencesPiusBinding
+import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
+import com.google.android.material.carousel.CarouselLayoutManager
+import java.util.Locale
 
 class IndulgencesPiusTab : Fragment() {
     private var _binding: TabIndulgencesPiusBinding? = null
     private val binding get() = _binding!!
+    private lateinit var carouselItemList : ArrayList<CarouselItem>
+    private lateinit var sharedPreferences : SharedPreferences
+    private val PREFS_NAME = "MyLanguagePreferences"
+    private val KEY_SAVED_VALUE ="ChosenLanguage"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,9 +32,22 @@ class IndulgencesPiusTab : Fragment() {
         _binding = TabIndulgencesPiusBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-        val rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext())
+        //Call the Rosary Details. Check if language was changed and saved to shared preferences.
+        //Otherwise use default language of device
+        carouselItemList = ArrayList<CarouselItem>()
+        val languageCode = Locale.getDefault().language
+        sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val chosenLanguage:String = sharedPreferences.getString(KEY_SAVED_VALUE, null).toString()
+
+        if (chosenLanguage.isNotEmpty()) {
+            val rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext(), chosenLanguage)
+            binding.textViewIndulgences.text = rosaryDetails[0].PromisesIndulgences
+        } else {
+            val rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext(), languageCode)
+            binding.textViewIndulgences.text = rosaryDetails[0].PromisesIndulgences
+        }
+
         binding.imagePius.setImageResource(R.drawable.piusix)
-        binding.textViewIndulgences.text = rosaryDetails[0].PromisesIndulgences
 
         return rootView
     }

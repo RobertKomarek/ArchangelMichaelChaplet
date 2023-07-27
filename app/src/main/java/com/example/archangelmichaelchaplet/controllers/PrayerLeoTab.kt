@@ -1,5 +1,7 @@
 package com.example.archangelmichaelchaplet.controllers
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +11,18 @@ import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentPromisesBinding
 import com.example.archangelmichaelchaplet.databinding.TabIndulgencesPiusBinding
 import com.example.archangelmichaelchaplet.databinding.TabPrayerLeoxiiiBinding
+import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
+import java.util.Locale
 
 class PrayerLeoTab : Fragment() {
     //private var _binding: TabIndulgencesPiusBinding? = null
     private var _binding: TabPrayerLeoxiiiBinding? = null
     private val binding get() = _binding!!
+    private lateinit var carouselItemList : ArrayList<CarouselItem>
+    private lateinit var sharedPreferences : SharedPreferences
+    private val PREFS_NAME = "MyLanguagePreferences"
+    private val KEY_SAVED_VALUE ="ChosenLanguage"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,9 +33,22 @@ class PrayerLeoTab : Fragment() {
         _binding = TabPrayerLeoxiiiBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-        val rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext())
+        //Call the Rosary Details. Check if language was changed and saved to shared preferences.
+        //Otherwise use default language of device
+        carouselItemList = ArrayList<CarouselItem>()
+        val languageCode = Locale.getDefault().language
+        sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val chosenLanguage:String = sharedPreferences.getString(KEY_SAVED_VALUE, null).toString()
+
+        if (chosenLanguage.isNotEmpty()) {
+            val rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext(), chosenLanguage)
+            binding.textViewPrayerLeo.text = rosaryDetails[0].PrayersLeo
+        } else {
+            val rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext(), languageCode)
+            binding.textViewPrayerLeo.text = rosaryDetails[0].PrayersLeo
+        }
+
         binding.imageLeoXiii.setImageResource(R.drawable.leoxiii)
-        binding.textViewPrayerLeo.text = rosaryDetails[0].PrayersLeo
 
         return rootView
     }

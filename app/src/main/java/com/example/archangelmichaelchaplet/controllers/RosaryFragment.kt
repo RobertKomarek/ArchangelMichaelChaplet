@@ -1,6 +1,8 @@
 package com.example.archangelmichaelchaplet.controllers
 
 import CarouselAdapter
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +18,7 @@ import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
 import androidx.fragment.app.activityViewModels
 import com.example.archangelmichaelchaplet.viewmodels.DarkLightModeViewModel
+import java.util.Locale
 
 
 class RosaryFragment : Fragment() {
@@ -28,6 +31,9 @@ class RosaryFragment : Fragment() {
     private lateinit var indicatorContainer: LinearLayout
     var darkModeEnabled : Boolean = false
     val darkLightModeViewModel: DarkLightModeViewModel by activityViewModels()
+    private lateinit var sharedPreferences: SharedPreferences
+    private val PREFS_NAME = "MyLanguagePreferences"
+    private val KEY_SAVED_VALUE ="ChosenLanguage"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -38,6 +44,7 @@ class RosaryFragment : Fragment() {
         val activity = requireActivity() as? AppCompatActivity
         activity?.supportActionBar?.hide()
 
+        //Change vector image of dark and light mode button
         darkModeEnabled = darkLightModeViewModel.darkModeEnabled
         if (darkModeEnabled) {
             binding.btnDarkNight.setImageResource(R.drawable.baseline_wb_sunny_24)
@@ -45,9 +52,17 @@ class RosaryFragment : Fragment() {
             binding.btnDarkNight.setImageResource(R.drawable.baseline_dark_mode_24)
         }
 
-        //Call the Rosary Details
+        //Call the Rosary Details. Check if language was changed and saved to shared preferences.
+        //Otherwise use default language of device
         carouselItemList = ArrayList<CarouselItem>()
-        loadedDetails = RosaryDetails.loadRosaryDetails(requireContext())
+        val languageCode = Locale.getDefault().language
+        sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val chosenLanguage:String = sharedPreferences.getString(KEY_SAVED_VALUE, null).toString()
+        if (chosenLanguage.length > 0) {
+            loadedDetails = RosaryDetails.loadRosaryDetails(requireContext(), chosenLanguage)
+        } else {
+            loadedDetails = RosaryDetails.loadRosaryDetails(requireContext(), languageCode)
+        }
 
         viewPager = binding.viewPager
         indicatorContainer = binding.indicatorContainer

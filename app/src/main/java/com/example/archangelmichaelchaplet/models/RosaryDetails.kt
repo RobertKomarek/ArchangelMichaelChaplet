@@ -1,6 +1,7 @@
 package com.example.archangelmichaelchaplet.models
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
 import java.util.Locale
 import com.google.gson.Gson
@@ -37,7 +38,7 @@ data class RosaryDetails (
 
 {
     companion object {
-        fun loadRosaryDetails(context: Context): List<RosaryDetails> {
+        fun loadRosaryDetails(context: Context, languageCode: String): List<RosaryDetails> {
             val jsonFile = "SanctiRosariiMichael.json"
             val jsonInputStream = context.assets.open(jsonFile)
             val jsonReader = BufferedReader(InputStreamReader(jsonInputStream))
@@ -49,15 +50,14 @@ data class RosaryDetails (
             val rosaryDetailsList: List<RosaryDetails> = gson.fromJson(jsonText, listType)
 
             val filteredList = rosaryDetailsList.filter { details ->
-                details.Language.contains(getSystemLanguage())
+                details.Language.contains(getSystemLanguage(languageCode))
             }
-
             return filteredList
         }
 
-        private fun getSystemLanguage(): String {
+        private fun getSystemLanguage(languageCode:String): String {
             var language = ""
-            val languageCode = Locale.getDefault().language
+            //val languageCode = Locale.getDefault().language
             when (languageCode) {
                 "en" -> {
                     language = "English"
