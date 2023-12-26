@@ -1,10 +1,7 @@
 package com.example.archangelmichaelchaplet
 
-import android.content.Context
-import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
@@ -13,17 +10,23 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.archangelmichaelchaplet.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 
 
 class   MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    lateinit var sharedViewModel: RosaryViewModel
     private val PREFS_NAME = "MyPrefs"
     private val SHOW_MESSAGE_KEY = "ShowMessage"
+    //private val rosaryDetailsViewModel: RosaryDetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        sharedViewModel = ViewModelProvider(this).get(RosaryViewModel::class.java)
 
         //Disable Landscape Orientation
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT

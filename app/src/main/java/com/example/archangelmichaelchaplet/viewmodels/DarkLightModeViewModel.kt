@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class DarkLightModeViewModel : ViewModel() {
-    var darkModeEnabled: Boolean = false
+    val darkModeEnabled = MutableLiveData<Boolean>()
+    //var dakModeEnabled: Boolean = false
     /*private val _darkModeEnabled =  MutableLiveData<Boolean>()
     val darkModeEnabled: LiveData<Boolean> get() = _darkModeEnabled
 

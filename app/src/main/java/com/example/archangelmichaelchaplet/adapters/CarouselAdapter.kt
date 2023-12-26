@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.archangelmichaelchaplet.databinding.ItemCarouselBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 
-class CarouselAdapter(private val items: ArrayList<CarouselItem>) :
+class CarouselAdapter(private var items: ArrayList<CarouselItem>) :
     RecyclerView.Adapter<CarouselAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemCarouselBinding) :
@@ -33,6 +33,12 @@ class CarouselAdapter(private val items: ArrayList<CarouselItem>) :
 
     override fun getItemCount(): Int {
         return items.size
+    }
+
+    // Function to update the data in the adapter
+    fun updateData(newItemList: ArrayList<CarouselItem>) {
+        items = newItemList
+        notifyDataSetChanged()
     }
 }
 

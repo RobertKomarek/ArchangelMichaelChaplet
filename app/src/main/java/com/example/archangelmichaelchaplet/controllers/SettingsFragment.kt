@@ -16,6 +16,8 @@ import android.graphics.Typeface
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.util.Log
+import androidx.fragment.app.viewModels
+import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 import java.util.Locale
 
 
@@ -26,6 +28,7 @@ class SettingsFragment : Fragment() {
     private val PREFS_NAME = "MyLanguagePreferences"
     private val KEY_SAVED_VALUE ="ChosenLanguage"
     private lateinit var sharedPreferences: SharedPreferences
+    private val sharedViewModel: RosaryViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
@@ -60,9 +63,9 @@ class SettingsFragment : Fragment() {
         sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString(KEY_SAVED_VALUE, null)
         val defaultLanguage = Locale.getDefault().language
-        /*//Set English as default isChecked = true language and update with the following if-statement
-        radioButtons[0].isChecked = true*/
 
+        /*Set English as default isChecked = true language and update with the following if-statement
+        radioButtons[0].isChecked = true*/
         if (selectedLanguage != null) {
             for (radioButton in radioButtons) {
                 if (resources.getResourceEntryName(radioButton.id) == selectedLanguage) {
@@ -109,7 +112,6 @@ class SettingsFragment : Fragment() {
             var url = "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
             openUrl(url)
         }
-
         return rootView
     }
 
@@ -124,6 +126,8 @@ class SettingsFragment : Fragment() {
         val editor = sharedPreferences.edit()
         editor.putString(KEY_SAVED_VALUE, radioButtonEntryName)
         editor.apply()
+        //Update the ViewModel
+        sharedViewModel.filterRosaryDetailsByLanguage()
     }
 
 

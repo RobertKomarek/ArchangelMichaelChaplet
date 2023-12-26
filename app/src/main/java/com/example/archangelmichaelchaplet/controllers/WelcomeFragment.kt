@@ -8,21 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentWelcomeBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
+import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 import java.util.Locale
 
 class WelcomeFragment : Fragment() {
 
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var carouselItemList : ArrayList<CarouselItem>
-    private lateinit var sharedPreferences : SharedPreferences
-    private val PREFS_NAME = "MyLanguagePreferences"
-    private val KEY_SAVED_VALUE ="ChosenLanguage"
+    private val sharedViewModel: RosaryViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -32,33 +32,25 @@ class WelcomeFragment : Fragment() {
         activity?.supportActionBar?.hide()
 
         _binding = FragmentWelcomeBinding.inflate(inflater, container, false)
+
+        binding.btnToRosary.setOnClickListener() {
+            findNavController().navigate(R.id.action_fragment_welcome_to_navigation_rosary)
+        }
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Call the Rosary Details. Check if language was changed and saved to shared preferences.
-        //Otherwise use default language of device
-        carouselItemList = ArrayList<CarouselItem>()
-        val languageCode = Locale.getDefault().language
-        sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val chosenLanguage:String = sharedPreferences.getString(KEY_SAVED_VALUE, null).toString()
+        sharedViewModel.filteredRosaryDetailsListByLanguage.observe(viewLifecycleOwner) { rosaryDetails: List<RosaryDetails> ->
+            binding.btnToRosary.text = rosaryDetails[0].ChapletStart
+            binding.textViewWelcome.text = rosaryDetails[0].AppWelcomeTitle
+            binding.textViewExplanation.text = rosaryDetails[0].AppWelcomeText
 
-        lateinit var rosaryDetails : List<RosaryDetails>
-        if (chosenLanguage.isNotEmpty()) {
-            rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext(), chosenLanguage)
-        } else {
-            rosaryDetails = RosaryDetails.loadRosaryDetails(requireContext(), languageCode)
-        }
-
-        binding.btnToRosary.text = rosaryDetails[0].ChapletStart
-        binding.textViewWelcome.text = rosaryDetails[0].AppWelcomeTitle
-        binding.textViewExplanation.text = rosaryDetails[0].AppWelcomeText
-
-        binding.btnToRosary.setOnClickListener() {
-            findNavController().navigate(R.id.action_fragment_welcome_to_navigation_rosary)
+            binding.btnToRosary.setOnClickListener() {
+                findNavController().navigate(R.id.action_fragment_welcome_to_navigation_rosary)
+            }
         }
     }
-
 }
