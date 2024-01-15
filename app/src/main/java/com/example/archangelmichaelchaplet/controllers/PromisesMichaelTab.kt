@@ -13,13 +13,11 @@ import com.example.archangelmichaelchaplet.databinding.TabIndulgencesPiusBinding
 import com.example.archangelmichaelchaplet.databinding.TabPromisesMichaelBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
-import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 import java.util.Locale
 
 class PromisesMichaelTab: Fragment() {
     private var _binding: TabPromisesMichaelBinding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: RosaryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +35,8 @@ class PromisesMichaelTab: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedViewModel.filteredRosaryDetailsListByLanguage.observe(viewLifecycleOwner) { rosaryDetails: List<RosaryDetails> ->
+       /* sharedViewModel.filteredRosaryDetailsListByLanguage.observe(viewLifecycleOwner) { rosaryDetails: List<RosaryDetails> ->
             binding.textViewPromises.text = rosaryDetails[0].PromisesMichael
-        }
+        }*/
     }
 }

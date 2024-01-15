@@ -17,7 +17,6 @@ import com.example.archangelmichaelchaplet.databinding.FragmentPromisesBinding
 import com.example.archangelmichaelchaplet.databinding.TabIndulgencesPiusBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
-import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 import com.google.android.material.carousel.CarouselLayoutManager
 import java.util.Locale
 
@@ -79,16 +78,11 @@ class IndulgencesPiusTab : Fragment() {
         super.onViewCreated(view, savedInstanceState)
        // Access the shared ViewModel from the activity and observe the data
        val activity = requireActivity() as MainActivity
-       val sharedViewModel = activity.sharedViewModel
        /*sharedViewModel.getSharedData().observe(viewLifecycleOwner, Observer { data ->
            // Update your UI using the shared data
            binding.textView.text = data
        })*/
-        //sharedViewModel = ViewModelProvider(requireActivity()).get(RosaryViewModel::class.java)
-        sharedViewModel.filteredRosaryDetailsListByLanguage.observe(viewLifecycleOwner) { rosaryDetails: List<RosaryDetails> ->
-            binding.textViewIndulgences.text = rosaryDetails[0].PromisesIndulgences
-            //println(rosaryDetails)
-        }
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

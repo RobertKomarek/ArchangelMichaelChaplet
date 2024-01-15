@@ -12,14 +12,12 @@ import androidx.fragment.app.viewModels
 import com.example.archangelmichaelchaplet.databinding.FragmentPromisesBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
-import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.Locale
 
 class PromisesFragment : Fragment() {
     private var _binding: FragmentPromisesBinding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: RosaryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +30,7 @@ class PromisesFragment : Fragment() {
         return rootView
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedViewModel.filteredRosaryDetailsListByLanguage.observe(viewLifecycleOwner) { rosaryDetails: List<RosaryDetails> ->
             val fragmentList = arrayListOf(
@@ -51,7 +49,7 @@ class PromisesFragment : Fragment() {
                 }
             }.attach()
         }
-    }
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -15,14 +15,12 @@ import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentWelcomeBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
-import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 import java.util.Locale
 
 class WelcomeFragment : Fragment() {
 
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: RosaryViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -40,7 +38,7 @@ class WelcomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         sharedViewModel.filteredRosaryDetailsListByLanguage.observe(viewLifecycleOwner) { rosaryDetails: List<RosaryDetails> ->
@@ -52,5 +50,5 @@ class WelcomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_fragment_welcome_to_navigation_rosary)
             }
         }
-    }
+    }*/
 }

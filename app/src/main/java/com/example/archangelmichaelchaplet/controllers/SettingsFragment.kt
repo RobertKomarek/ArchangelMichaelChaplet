@@ -17,7 +17,6 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.util.Log
 import androidx.fragment.app.viewModels
-import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 import java.util.Locale
 
 
@@ -28,7 +27,6 @@ class SettingsFragment : Fragment() {
     private val PREFS_NAME = "MyLanguagePreferences"
     private val KEY_SAVED_VALUE ="ChosenLanguage"
     private lateinit var sharedPreferences: SharedPreferences
-    private val sharedViewModel: RosaryViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
@@ -126,10 +124,7 @@ class SettingsFragment : Fragment() {
         val editor = sharedPreferences.edit()
         editor.putString(KEY_SAVED_VALUE, radioButtonEntryName)
         editor.apply()
-        //Update the ViewModel
-        sharedViewModel.filterRosaryDetailsByLanguage()
     }
-
 
     //Safe selected Language to Shared Preferences
     private fun saveSelectedRadioButtonId(context: Context, radioButtonId: String) {

@@ -49,13 +49,16 @@ data class RosaryDetails (
             val listType = object : TypeToken<List<RosaryDetails>>() {}.type
             val rosaryDetailsList: List<RosaryDetails> = gson.fromJson(jsonText, listType)
 
-            val filteredList = rosaryDetailsList.filter { details ->
+            /*val filteredList = rosaryDetailsList.filter { details ->
                 details.Language.contains(getSystemLanguage(languageCode))
+            }*/
+            val filteredList = rosaryDetailsList.filter { details ->
+                details.Language.contains(languageCode)
             }
             return filteredList
         }
 
-        private fun getSystemLanguage(languageCode:String): String {
+        /*private fun getSystemLanguage(languageCode:String): String {
             var language = ""
             //val languageCode = Locale.getDefault().language
             when (languageCode) {
@@ -85,13 +88,13 @@ data class RosaryDetails (
                 }
             }
             return language
-            /*English: en
+            *//*English: en
             German: de
             French: fr
             Spanish: es
             Portuguese: pt
             Italian: it
-            Chinese: zh*/
-        }
+            Chinese: zh*//*
+        }*/
     }
 }

@@ -12,13 +12,11 @@ import com.example.archangelmichaelchaplet.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 
 
 class   MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    lateinit var sharedViewModel: RosaryViewModel
     private val PREFS_NAME = "MyPrefs"
     private val SHOW_MESSAGE_KEY = "ShowMessage"
     //private val rosaryDetailsViewModel: RosaryDetailsViewModel by viewModels()
@@ -26,7 +24,6 @@ class   MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        sharedViewModel = ViewModelProvider(this).get(RosaryViewModel::class.java)
 
         //Disable Landscape Orientation
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT

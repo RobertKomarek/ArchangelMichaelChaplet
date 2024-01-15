@@ -4,7 +4,6 @@ import CarouselAdapter
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,15 +15,7 @@ import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentRosaryBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import com.example.archangelmichaelchaplet.viewmodels.DarkLightModeViewModel
-import com.example.archangelmichaelchaplet.viewmodels.RosaryViewModel
 import java.util.Locale
-import androidx.lifecycle.ViewModelProvider
-
-
 
 class RosaryFragment : Fragment() {
     private var _binding: FragmentRosaryBinding? = null
@@ -35,9 +26,7 @@ class RosaryFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var indicatorContainer: LinearLayout
     var darkModeEnabled : Boolean = false
-    //val darkLightModeViewModel: DarkLightModeViewModel by activityViewModels()
     private lateinit var sharedPreferences: SharedPreferences
-    //private val sharedViewModel: RosaryViewModel by viewModels()
     private val PREFS_NAME = "MyLanguagePreferences"
     private val KEY_SAVED_VALUE ="ChosenLanguage"
 
@@ -60,12 +49,13 @@ class RosaryFragment : Fragment() {
             binding.btnDarkNight.setImageResource(R.drawable.baseline_dark_mode_24)
         }
 
-        //Call the Rosary Details. Check if language was changed and saved to shared preferences.
+        //Call the Rosary text. Check if language was changed and saved to shared preferences.
         //Otherwise use default language of device
         carouselItemList = ArrayList<CarouselItem>()
         val languageCode:String = Locale.getDefault().language
+
         sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val chosenLanguage : String? = sharedPreferences.getString(KEY_SAVED_VALUE, null)?.toString()
+        val chosenLanguage : String? = sharedPreferences.getString(KEY_SAVED_VALUE, null)
 
         if (chosenLanguage != null) {
             loadedDetails = RosaryDetails.loadRosaryDetails(requireContext(), chosenLanguage)
@@ -88,6 +78,7 @@ class RosaryFragment : Fragment() {
                 carouselItemList.add(carouselItem)
             }
         }
+
         adapter = CarouselAdapter(carouselItemList)
         viewPager.adapter = adapter
 
@@ -133,63 +124,6 @@ class RosaryFragment : Fragment() {
 
         return rootView
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        /*// Observe the LiveData from the shared ViewModel and update the UI accordingly
-        sharedViewModel.filteredRosaryDetailsListByLanguage.observe(viewLifecycleOwner) {
-                rosaryDetails: List<RosaryDetails> ->*/
-            // Update your UI with the rosaryDetailsList data
-            // For example:
-            //updateRecyclerView(rosaryDetails)
-
-
-            viewPager = binding.viewPager
-            indicatorContainer = binding.indicatorContainer
-
-            carouselItemList = ArrayList<CarouselItem>()
-            //setDarkOrLightMode()
-            for (rosaryDetail in loadedDetails) {
-                if (darkModeEnabled) {
-                    val drawableResId = getDrawableResIdFromImageName(rosaryDetail.ImageDark)
-                    val carouselItem = CarouselItem(drawableResId, rosaryDetail.Chaplet)
-                    carouselItemList.add(carouselItem)
-                } else {
-                    val drawableResId = getDrawableResIdFromImageName(rosaryDetail.Image)
-                    val carouselItem = CarouselItem(drawableResId, rosaryDetail.Chaplet)
-                    carouselItemList.add(carouselItem)
-                }
-            }
-
-            adapter = CarouselAdapter(carouselItemList) // Initialize with an empty list
-            binding.viewPager.adapter = adapter
-
-            // Observe the MutableLiveData from the ViewModel
-          /*  sharedViewModel.rosaryDetailsList.observe(viewLifecycleOwner, Observer { carouselItemList ->
-                // Update the adapter with the new data when it changes
-                adapter.updateData(carouselItemList)
-            })*/
-
-            adapter = CarouselAdapter(carouselItemList)
-            viewPager.adapter = adapter
-
-            // Add indicators for each item in the adapter
-            for (i in 0 until adapter.itemCount) {
-                val indicatorItem = LayoutInflater.from(requireContext())
-                    .inflate(R.layout.indicator_item_layout, indicatorContainer, false)
-                indicatorContainer.addView(indicatorItem)
-            }
-
-            // Set up the page change listener
-            viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    updateIndicator(position)
-                }
-            })
-        }
-
 
     private fun setDarkOrLightMode() {
         if (darkModeEnabled) {
