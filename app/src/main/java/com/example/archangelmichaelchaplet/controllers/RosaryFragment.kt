@@ -17,6 +17,7 @@ import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
 import java.util.Locale
 
+
 class RosaryFragment : Fragment() {
     private var _binding: FragmentRosaryBinding? = null
     private val binding get() = _binding!!
@@ -27,8 +28,10 @@ class RosaryFragment : Fragment() {
     private lateinit var indicatorContainer: LinearLayout
     var darkModeEnabled : Boolean = false
     private lateinit var sharedPreferences: SharedPreferences
-    private val PREFS_NAME = "MyLanguagePreferences"
-    private val KEY_SAVED_VALUE ="ChosenLanguage"
+    private val PREFS_LANGUAGE = "MyLanguagePreferences"
+    private val PREFS_DARK_LIGHT_MODE = "DarkLightModePreferences"
+    private val KEY_CHOSEN_LANGUAGE ="ChosenLanguage"
+    private val KEY_SET_MODE ="DarkOrLightMode"
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -41,21 +44,13 @@ class RosaryFragment : Fragment() {
         val activity = requireActivity() as? AppCompatActivity
         activity?.supportActionBar?.hide()
 
-       //Change vector image of dark and light mode button
-        //darkModeEnabled = sharedViewModel.darkModeEnabled.value == true
-        if (darkModeEnabled) {
-            binding.btnDarkNight.setImageResource(R.drawable.baseline_wb_sunny_24)
-        } else {
-            binding.btnDarkNight.setImageResource(R.drawable.baseline_dark_mode_24)
-        }
-
         //Call the Rosary text. Check if language was changed and saved to shared preferences.
         //Otherwise use default language of device
         carouselItemList = ArrayList<CarouselItem>()
         val languageCode:String = Locale.getDefault().language
 
-        sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val chosenLanguage : String? = sharedPreferences.getString(KEY_SAVED_VALUE, null)
+        sharedPreferences = requireActivity().getSharedPreferences(PREFS_LANGUAGE, Context.MODE_PRIVATE)
+        val chosenLanguage : String? = sharedPreferences.getString(KEY_CHOSEN_LANGUAGE, null)
 
         if (chosenLanguage != null) {
             loadedDetails = RosaryDetails.loadRosaryDetails(requireContext(), chosenLanguage)
@@ -66,16 +61,26 @@ class RosaryFragment : Fragment() {
         viewPager = binding.viewPager
         indicatorContainer = binding.indicatorContainer
 
+        //Load from Shared Preferences if dark or light mode was enabled before (e.g. after switching to another tab)
+        val sharedPreferences =
+            requireActivity().getSharedPreferences(PREFS_DARK_LIGHT_MODE, Context.MODE_PRIVATE)
+        // Retrieve the Boolean variable from SharedPreferences
+        darkModeEnabled = sharedPreferences.getBoolean(KEY_SET_MODE, false)
+
         //setDarkOrLightMode()
         for (rosaryDetail in loadedDetails) {
             if (darkModeEnabled) {
                 val drawableResId = getDrawableResIdFromImageName(rosaryDetail.ImageDark)
                 val carouselItem = CarouselItem(drawableResId, rosaryDetail.Chaplet)
                 carouselItemList.add(carouselItem)
+                //Change vector image of dark and light mode button
+                binding.btnDarkNight.setImageResource(R.drawable.baseline_wb_sunny_24)
             } else {
                 val drawableResId = getDrawableResIdFromImageName(rosaryDetail.Image)
                 val carouselItem = CarouselItem(drawableResId, rosaryDetail.Chaplet)
                 carouselItemList.add(carouselItem)
+                //Change vector image of dark and light mode button
+                binding.btnDarkNight.setImageResource(R.drawable.baseline_dark_mode_24)
             }
         }
 
@@ -100,8 +105,13 @@ class RosaryFragment : Fragment() {
         binding.btnDarkNight.setOnClickListener {
             //toggle between darkModeEnable is true and false
             darkModeEnabled = !darkModeEnabled
-            //println("Dark Mode Enabled $darkModeEnabled")
-            //sharedViewModel.darkModeEnabled.value = darkModeEnabled
+
+            //Save boolean darkModeEnabled to Shared Preferences
+            val sharedPreferences = requireActivity().getSharedPreferences(PREFS_DARK_LIGHT_MODE, Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean(KEY_SET_MODE, darkModeEnabled)
+            editor.apply()
+
             setDarkOrLightMode()
         }
 
@@ -121,7 +131,6 @@ class RosaryFragment : Fragment() {
             val currentItem = binding.viewPager.currentItem
             binding.viewPager.setCurrentItem(currentItem - 1, true)
         }
-
         return rootView
     }
 
