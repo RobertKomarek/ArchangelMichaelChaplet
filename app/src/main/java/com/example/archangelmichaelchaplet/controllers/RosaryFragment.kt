@@ -19,18 +19,20 @@ import java.util.Locale
 
 
 class RosaryFragment : Fragment() {
+
     private var _binding: FragmentRosaryBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: CarouselAdapter
+
     private lateinit var carouselItemList : ArrayList<CarouselItem>
     private lateinit var loadedDetails : List<RosaryDetails>
+    private lateinit var adapter: CarouselAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var indicatorContainer: LinearLayout
     var darkModeEnabled : Boolean = false
     private lateinit var sharedPreferences: SharedPreferences
     private val PREFS_LANGUAGE = "MyLanguagePreferences"
-    private val PREFS_DARK_LIGHT_MODE = "DarkLightModePreferences"
     private val KEY_CHOSEN_LANGUAGE ="ChosenLanguage"
+    private val PREFS_DARK_LIGHT_MODE = "DarkLightModePreferences"
     private val KEY_SET_MODE ="DarkOrLightMode"
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -62,7 +64,7 @@ class RosaryFragment : Fragment() {
         indicatorContainer = binding.indicatorContainer
 
         //Load from Shared Preferences if dark or light mode was enabled before (e.g. after switching to another tab)
-        val sharedPreferences =
+        var sharedPreferences =
             requireActivity().getSharedPreferences(PREFS_DARK_LIGHT_MODE, Context.MODE_PRIVATE)
         // Retrieve the Boolean variable from SharedPreferences
         darkModeEnabled = sharedPreferences.getBoolean(KEY_SET_MODE, false)
@@ -107,7 +109,7 @@ class RosaryFragment : Fragment() {
             darkModeEnabled = !darkModeEnabled
 
             //Save boolean darkModeEnabled to Shared Preferences
-            val sharedPreferences = requireActivity().getSharedPreferences(PREFS_DARK_LIGHT_MODE, Context.MODE_PRIVATE)
+            sharedPreferences = requireActivity().getSharedPreferences(PREFS_DARK_LIGHT_MODE, Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putBoolean(KEY_SET_MODE, darkModeEnabled)
             editor.apply()

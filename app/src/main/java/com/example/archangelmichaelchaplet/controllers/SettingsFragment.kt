@@ -34,7 +34,6 @@ class SettingsFragment : Fragment() {
 
         // Load the custom font from assets/fonts directory
         val typeface = Typeface.createFromAsset(requireContext().assets, "fonts/lora_regular.ttf")
-
         // Set the custom font to the TextView
         binding.textViewHeader.typeface = typeface
 
@@ -102,12 +101,12 @@ class SettingsFragment : Fragment() {
         }
 
         binding.buttonOpenCreativeCommons.setOnClickListener {
-            var url = "https://creativecommons.org"
+            val url = "https://creativecommons.org"
             openUrl(url)
         }
 
         binding.buttonOpenPublicDomain.setOnClickListener {
-            var url = "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+            val url = "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
             openUrl(url)
         }
         return rootView
