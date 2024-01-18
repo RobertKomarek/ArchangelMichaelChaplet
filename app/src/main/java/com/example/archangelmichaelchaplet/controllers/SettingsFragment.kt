@@ -11,12 +11,8 @@ import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import com.example.archangelmichaelchaplet.R
 import com.example.archangelmichaelchaplet.databinding.FragmentSettingsBinding
-import android.content.pm.PackageManager
 import android.graphics.Typeface
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
-import android.util.Log
-import androidx.fragment.app.viewModels
 import java.util.Locale
 
 

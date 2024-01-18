@@ -1,6 +1,6 @@
 package com.example.archangelmichaelchaplet.controllers
 
-import ViewPagerIndulgencesPromisesAdapter
+import TabsAdapterPromisesIndulgences
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.archangelmichaelchaplet.databinding.FragmentPrayersBinding
 import com.example.archangelmichaelchaplet.models.CarouselItem
 import com.example.archangelmichaelchaplet.models.RosaryDetails
@@ -27,8 +26,7 @@ class PrayersFragment : Fragment() {
         _binding = FragmentPrayersBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-        //Call the Rosary Details. Check if language was changed and saved to shared preferences.
-        //Otherwise use default language of device
+        //Call the Rosary Details. Check if language was changed and saved to shared preferences. Otherwise use default language of device
         val carouselItemList = ArrayList<CarouselItem>()
         val languageCode = Locale.getDefault().language
         sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -45,7 +43,7 @@ class PrayersFragment : Fragment() {
             PrayerLitanyTab()
         )
 
-        val adapter = ViewPagerIndulgencesPromisesAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
+        val adapter = TabsAdapterPromisesIndulgences(this)
         binding.viewPagerPrayers.adapter = adapter
 
         TabLayoutMediator(binding.tabLayoutPrayers, binding.viewPagerPrayers) { tab, position ->

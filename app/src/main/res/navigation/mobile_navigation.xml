@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/navigation_promises"
-        android:name="com.example.archangelmichaelchaplet.controllers.PromisesFragment"
+        android:name="com.example.archangelmichaelchaplet.controllers.PromisesIndulgencesFragment"
         android:label="@string/title_promises"
         tools:layout="@layout/fragment_promises" />
 
